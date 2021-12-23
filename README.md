@@ -1,15 +1,17 @@
 # WordPress 
 
-WordPress es basicamente un gestor de contenidos escrito en PHP. Es por eso, que esta herramienta se suele ver en modulos como Desarrollo de Páginas WEB. Es decir, con WordPress, un usuario X puede acceder a una página de "Login", autentificarse y acceder a la página principal de Adminitración desde la que podemos modificar todo tipo de contenido que publiquemos. Como es deducible, si el usuario que accede es un "Messi" de PHP, podrá modificar todos los plugins, temas, páginas y contenidos a su antojo. 
+WordPress es básicamente un gestor de contenidos escrito en PHP. Es por eso, que esta herramienta se suele ver en módulos como Desarrollo de Páginas WEB. Es decir, con WordPress, un usuario X puede acceder a una página de "Login", autentificarse y acceder a la página principal de Administración desde la que podemos modificar todo tipo de contenido que publiquemos. Como es deducible, si el usuario que accede es un "Messi" de PHP, podrá modificar todos los plugins, temas, páginas y contenidos a su antojo.
 
-A continuación, explicaré como montar un WordPress desde cero y con el menor numero de inconvenientes.
+
+A continuación, explicaré como montar un WordPress desde cero y con el menor número de inconvenientes.
+
 
 
 # Preparación del entorno
 
-Como es hábitual, vamos a utilizar Docker compose ya que, mediante volumenes podemos hacer que nuestras páginas e inclusive nuestra base de datos con usuarios, perdure. 
+Como es habitual, vamos a utilizar Docker compose, ya que, mediante volúmenes podemos hacer que nuestras páginas e inclusive nuestra base de datos con usuarios, perdure.
 
-Tan solo tenemos que montar un Docker-compose.yaml con los datos adientes. 
+Tan solo tenemos que montar un Docker-compose.yaml con los datos que correspondan. 
 
 #### Instalamos Docker y Docker Compose
 
@@ -17,7 +19,7 @@ Para instalar Docker, ejecutaremos lo siguiente en nuestra terminal:
 
         sudo apt install docker.io
 
-Una vez instalado Docker, instalamos docker compose:
+Una vez instalado Docker, instalamos Docker Compose:
 
            sudo apt install curl
            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -81,7 +83,8 @@ El primero contendor:
             volumes:
               - wordpress:/var/www/html
               
-La imagén es la de Wordpress, con el parametro "restart", se reincia siempre que apaguemos el contendor. "Ports" hace referencia a los puertos que usaremos. El 80 del contendor será el 8080 de nuestro Host. Esto lo aclaro, por si se está corriendo algún servicio en el puerto 8080, nos dará un error a la hora de montar el _"compose"_ lo suyo es para esos servicios antes de iniciar el compose o cambiar el puerto 8080 por otro, por ejemplo, el 2342.
+La imagen es la de Wordpress, con el parámetro "restart", se reinicia siempre que apaguemos el contendor. "Ports" hace referencia a los puertos que usaremos. El 80 del contendor será el 8080 de nuestro Host. Esto lo aclaro, por si se está corriendo algún servicio en el puerto 8080, nos dará un error a la hora de montar el _"compose"_ lo suyo es para esos servicios antes de iniciar el compose o cambiar el puerto 8080 por otro, por ejemplo, el 2342.
+
 
 Saldría un error de este tipo:
 
@@ -155,16 +158,23 @@ Con esto ya tendriamos acceso a la página de administrador:
 
 ![imagen](https://user-images.githubusercontent.com/80277545/147273009-4918b595-3f40-4755-9634-bf2a01c3b915.png)
 
+# Accediendo a archivos de configuración
+
+Para acceder y modificar con profundidad WordPress, podemos acceder al contenedor de nombre "wordpress" con:
+
+        docker exec -it entorno_wordpress_wordpress_1 /bin/bash
+        
+![imagen](https://user-images.githubusercontent.com/80277545/147274996-422d3193-9a12-40d8-ad58-97c173485933.png)
+
+        
 
 # Conclusión
 
-Como conlusión, puedo decir que el hecho de saber usar WordPress, es algo que se requiere en las empresas. Ahora, con esta guía podremos pobrarlo e intentar familiarizarnos. 
+Como conclusión, puedo decir que el hecho de saber usar WordPress, es algo que se requiere en las empresas. Ahora, con esta guía podremos poblarlo e intentar familiarizarnos.
 
 Como siempre para cualquier aportación, no dudéis en contactarme en: z0s3r77@gmail.com
 
-Gracias. 
-
-
+Gracias.
 
 
 
